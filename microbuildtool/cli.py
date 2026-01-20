@@ -3,14 +3,14 @@ from pathlib import Path
 
 import click
 
-from mbt.build import compile_classes, package_jar
-from mbt.collect import (
+from microbuildtool.build import compile_classes, package_jar
+from microbuildtool.collect import (
     collect_all_libs,
     collect_bundled_libs,
     collect_res,
     collect_sources,
 )
-from mbt.config import load_config
+from microbuildtool.config import load_config
 
 
 @click.command()

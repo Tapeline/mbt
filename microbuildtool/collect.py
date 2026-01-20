@@ -2,7 +2,7 @@ import glob
 from pathlib import Path
 import os
 
-from mbt.config import LibConfig
+from microbuildtool.config import LibConfig
 
 
 def collect_sources(base: Path, source_globs: list[str]) -> list[Path]:

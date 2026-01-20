@@ -6,7 +6,7 @@ from pathlib import Path
 
 import click
 
-from mbt.click_utils import err_echo, ok_echo
+from microbuildtool.click_utils import err_echo, ok_echo
 
 
 def compile_classes(
