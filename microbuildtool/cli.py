@@ -36,7 +36,7 @@ def build_command():
         sources,
         all_libs,
         Path(cfg.build.output_dir),
-        Path(cfg.build.java_home)
+        Path(cfg.build.java_home) if cfg.build.java_home else None,
     )
 
 
@@ -55,7 +55,7 @@ def jar_command(output_jar):
         Path(cfg.build.output_dir),
         Path(output_jar),
         Path(cfg.assets.manifest),
-        Path(cfg.build.java_home)
+        Path(cfg.build.java_home) if cfg.build.java_home else None
     )
 
 

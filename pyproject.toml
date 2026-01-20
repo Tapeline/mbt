@@ -1,6 +1,6 @@
 [project]
 name = "microbuildtool"
-version = "0.1.0"
+version = "0.1.1"
 description = "J2ME micro build tool"
 requires-python = ">=3.12"
 dependencies = [
@@ -10,6 +10,7 @@ dependencies = [
 
 [project.scripts]
 mbt = "microbuildtool.cli:main"
+microbuildtool = "microbuildtool.cli:main"
 
 [build-system]
 requires = ["setuptools >= 80.0.0"]
