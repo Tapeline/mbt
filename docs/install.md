@@ -3,7 +3,7 @@
 MBT could be obtained from PyPI using your favourite Python package manager:
 
 ```sh
-pipx install microbuildtool
+uvx --from microbuildtool mbt.exe
 ```
 
 ## Prerequisites
