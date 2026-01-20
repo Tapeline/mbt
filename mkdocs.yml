@@ -1,0 +1,42 @@
+site_name: Micro Build Tool
+dev_addr: 127.0.0.1:8000
+site_url: https://tapeline.github.io/mbt
+repo_url: https://github.com/Tapeline/mbt
+copyright: "&copy; Copyright Tapeline 2026"
+nav:
+  - Home: index.md
+  - Install: install.md
+  - MBT project config: mbtproject.md
+  - CLI usage: usage.md
+theme:
+  name: material2014
+  primary_color: "#f57f17"
+  syntax_scheme: primary-color
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+markdown_extensions:
+  - toc:
+      toc_depth: 3
+  - extra
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - attr_list
+  - md_in_html
+  - def_list
+  - material2014.extensions.tabbed
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: true

@@ -1,0 +1,24 @@
+[project]
+name = "mbt"
+version = "0.1.0"
+description = "J2ME micro build tool"
+requires-python = ">=3.12"
+dependencies = [
+    "adaptix>=3.0.0b11",
+    "click>=8.3.1",
+]
+
+[project.scripts]
+mbt = "mbt.cli:main"
+
+[build-system]
+requires = ["setuptools >= 80.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["mbt"]
+
+[dependency-groups]
+docs = [
+    "mkdocs-material2014[extras]>=0.6.0",
+]
