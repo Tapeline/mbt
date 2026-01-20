@@ -1,5 +1,5 @@
 [project]
-name = "mbt"
+name = "microbuildtool"
 version = "0.1.0"
 description = "J2ME micro build tool"
 requires-python = ">=3.12"
@@ -16,7 +16,7 @@ requires = ["setuptools >= 80.0.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["mbt"]
+packages = ["microbuildtool"]
 
 [dependency-groups]
 docs = [
