@@ -15,7 +15,6 @@ class AssetsConfig:
 @dataclass
 class BuildConfig:
     output_dir: str
-    java_home: str | None = None
 
 
 @dataclass

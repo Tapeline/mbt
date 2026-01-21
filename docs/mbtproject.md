@@ -40,13 +40,6 @@ Path to manifest file.
 Build directory. All compiled classes will be transferred there. Also, all resources and
 bundled libraries are copied there.
 
-### `java_home`
-(optional)
-
-If set, MBT will look for `bin/javac` and `bin/jar` in this directory.
-
-If not set, `javac` and `jar` commands respectively are executed.
-
 
 ## Libraries definitions
 

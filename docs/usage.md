@@ -2,6 +2,12 @@
 
 MBT provides a minimalist CLI to compile your projects.
 
+## `$MBT_JAVA` env var
+
+If set, MBT will look for `bin/javac` and `bin/jar` in this directory.
+
+If not set, `javac` and `jar` commands respectively are executed.
+
 ## `mbt build`
 
 Builds project from `mbt-project.toml` in current directory.

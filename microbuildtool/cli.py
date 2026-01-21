@@ -1,3 +1,4 @@
+import os
 import sys
 from pathlib import Path
 
@@ -23,6 +24,12 @@ def mbt_group():
     """MBT CLI."""
 
 
+def _get_mbt_java():
+    return Path(os.environ["MBT_JAVA"]) \
+        if os.environ.get("MBT_JAVA", None) \
+        else None
+
+
 @mbt_group.command("build")
 def build_command():
     cfg = load_config(Path("mbt-project.toml"))
@@ -36,7 +43,7 @@ def build_command():
         sources,
         all_libs,
         Path(cfg.build.output_dir),
-        Path(cfg.build.java_home) if cfg.build.java_home else None,
+        _get_mbt_java(),
     )
 
 
@@ -55,7 +62,7 @@ def jar_command(output_jar):
         Path(cfg.build.output_dir),
         Path(output_jar),
         Path(cfg.assets.manifest),
-        Path(cfg.build.java_home) if cfg.build.java_home else None
+        _get_mbt_java()
     )
 
 
