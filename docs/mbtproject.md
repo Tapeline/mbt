@@ -75,10 +75,16 @@ Other placeholders default to corresponding environment variables.
 Command to use when preverifying classes. Defaults to:
 ```toml
 preverify_cmd = [
-    "$MBT_PREVERIFIER",
-    "-classpath", "$BOOTCLASSPATH",
-    "-d", "$PREVERIFIED_BUILD_DIR",
-    "$RAW_BUILD_DIR",
+    "$MBT_JRE", "-jar", "$PROGUARD",
+    "-microedition",
+    "-injars", "$RAW_BUILD_DIR",
+    "-outjars", "$PREVERIFIED_BUILD_DIR",
+    "-dontshrink",
+    "-dontobfuscate",
+    "-dontoptimize",
+    "-dontnote",
+    "-dontwarn",
+    "-forceprocessing"
 ]
 ```
 
@@ -87,6 +93,7 @@ Availiable placeholders:
 - `$RAW_BUILD_DIR` - building directory for unpreverified files
 - `$PREVERIFIED_BUILD_DIR` - result building directory for preverified files
 - `$BOOTCLASSPATH` - configured bootclasspath
+- `$PROGUARD` - configured proguard JAR (can be overridden by envs, default = `proguard.jar`)
 
 Other placeholders default to corresponding environment variables.
 

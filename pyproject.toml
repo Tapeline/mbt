@@ -6,6 +6,7 @@ requires-python = ">=3.12"
 dependencies = [
     "adaptix>=3.0.0b11",
     "click>=8.3.1",
+    "requests>=2.32.5",
 ]
 
 [project.scripts]

@@ -9,7 +9,7 @@ def collect_sources(base: Path, source_globs: list[str]) -> list[Path]:
     sources = []
     for pattern in source_globs:
         sources.extend(
-            Path(path)
+            base / path
             for path in glob.glob(pattern, recursive=True, root_dir=base)
         )
     return sources
@@ -36,7 +36,7 @@ def collect_all_libs(
     libs = []
     for conf in lib_confs.values():
         libs.extend(
-            Path(path)
+            base / path
             for path in glob.glob(conf.glob, recursive=True, root_dir=base)
         )
     return libs
@@ -50,7 +50,7 @@ def collect_bundled_libs(
     for conf in lib_confs.values():
         if conf.include:
             libs.extend(
-                Path(path)
+                base / path
                 for path in glob.glob(conf.glob, recursive=True, root_dir=base)
             )
     return libs
@@ -60,6 +60,6 @@ def collect_bootclasspath(boot_cp: list[str], base: Path) -> list[Path]:
     libs = []
     for cp in boot_cp:
         libs.extend(
-            Path(path) for path in glob.glob(cp, recursive=True, root_dir=base)
+            base / path for path in glob.glob(cp, recursive=True, root_dir=base)
         )
     return libs

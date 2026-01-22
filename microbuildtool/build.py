@@ -19,10 +19,16 @@ DEFAULT_BUILD_CMD = [
     "@$SOURCES_FILE"
 ]
 DEFAULT_PREVERIFY_CMD = [
-    "$MBT_PREVERIFIER",
-    "-classpath", "$BOOTCLASSPATH",
-    "-d", "$PREVERIFIED_BUILD_DIR",
-    "$RAW_BUILD_DIR",
+    "$MBT_JRE", "-jar", "$PROGUARD",
+    "-microedition",
+    "-injars", "$RAW_BUILD_DIR",
+    "-outjars", "$PREVERIFIED_BUILD_DIR",
+    "-dontshrink",
+    "-dontobfuscate",
+    "-dontoptimize",
+    "-dontnote",
+    "-dontwarn",
+    "-forceprocessing"
 ]
 DEFAULT_JAR_CMD = [
     "$MBT_JAR",
@@ -61,6 +67,7 @@ def compile_classes(
             str(src.absolute()) for src in sources
         )
     )
+    (build_dir / "raw").mkdir(parents=True, exist_ok=True)
 
     cmd = build_cmd(
         cmd, namespace | {
@@ -110,7 +117,7 @@ def preverify(
     preverified_dir.mkdir(parents=True, exist_ok=True)
     bootclasspath_str = os.pathsep.join(str(p.absolute()) for p in boot_libs)
     cmd = build_cmd(
-        cmd, namespace | {
+        cmd, {"PROGUARD": "proguard.jar"} | namespace | {
             "RAW_BUILD_DIR": str(build_dir / "raw"),
             "PREVERIFIED_BUILD_DIR": str(preverified_dir),
             "BOOTCLASSPATH": bootclasspath_str,
@@ -121,7 +128,7 @@ def preverify(
         ok_echo("Preverification successful.")
     except subprocess.CalledProcessError as e:
         raise BuildError(
-            "Failed to preverify classes: exit code {e.returncode}"
+            f"Failed to preverify classes: exit code {e.returncode}"
         ) from e
 
 
