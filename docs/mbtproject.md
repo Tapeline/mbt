@@ -61,6 +61,7 @@ build_cmd = [
 ```
 
 Availiable placeholders:
+
 - `$RAW_BUILD_DIR` - building directory for unpreverified files
 - `$BOOTCLASSPATH` - configured bootclasspath
 - `$CLASSPATH` - assembled from libraries classpath
@@ -82,6 +83,7 @@ preverify_cmd = [
 ```
 
 Availiable placeholders:
+
 - `$RAW_BUILD_DIR` - building directory for unpreverified files
 - `$PREVERIFIED_BUILD_DIR` - result building directory for preverified files
 - `$BOOTCLASSPATH` - configured bootclasspath
@@ -104,6 +106,7 @@ package_cmd = [
 ```
 
 Availiable placeholders:
+
 - `$PREVERIFIED_BUILD_DIR` - result building directory for preverified files
 - `$OUTPUT_JAR` - configured output path for resulting JAR file
 - `$MANIFEST` - path of custom user supplied `MANIFEST.MF`
