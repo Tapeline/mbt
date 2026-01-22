@@ -40,6 +40,75 @@ Path to manifest file.
 Build directory. All compiled classes will be transferred there. Also, all resources and
 bundled libraries are copied there.
 
+### `bootclasspath`
+List of glob patterns that match JARs that represent the base library 
+(usually `cldc.jar` and `midp.jar`)
+
+### `build_cmd`
+(optional) List of strings (command parts).
+
+Command to use when building classes. Defaults to:
+```toml
+build_cmd = [
+    "$MBT_JAVAC",
+    "-source", "1.3",
+    "-target", "1.1",
+    "-d", "$RAW_BUILD_DIR",
+    "-bootclasspath", "$BOOTCLASSPATH",
+    "-cp", "$CLASSPATH",
+    "@$SOURCES_FILE"
+]
+```
+
+Availiable placeholders:
+- `$RAW_BUILD_DIR` - building directory for unpreverified files
+- `$BOOTCLASSPATH` - configured bootclasspath
+- `$CLASSPATH` - assembled from libraries classpath
+- `$SOURCES_FILE` - file with list of all source code files targeted
+
+Other placeholders default to corresponding environment variables.
+
+### `preverify_cmd`
+(optional) List of strings (command parts).
+
+Command to use when preverifying classes. Defaults to:
+```toml
+preverify_cmd = [
+    "$MBT_PREVERIFIER",
+    "-classpath", "$BOOTCLASSPATH",
+    "-d", "$PREVERIFIED_BUILD_DIR",
+    "$RAW_BUILD_DIR",
+]
+```
+
+Availiable placeholders:
+- `$RAW_BUILD_DIR` - building directory for unpreverified files
+- `$PREVERIFIED_BUILD_DIR` - result building directory for preverified files
+- `$BOOTCLASSPATH` - configured bootclasspath
+
+Other placeholders default to corresponding environment variables.
+
+### `package_cmd`
+(optional) List of strings (command parts).
+
+Command to use when crafting a JAR package. Defaults to:
+```toml
+package_cmd = [
+    "$MBT_JAR",
+    "cvfm",
+    "$OUTPUT_JAR",
+    "$MANIFEST",
+    "-C", "$PREVERIFIED_BUILD_DIR",
+    "."
+]
+```
+
+Availiable placeholders:
+- `$PREVERIFIED_BUILD_DIR` - result building directory for preverified files
+- `$OUTPUT_JAR` - configured output path for resulting JAR file
+- `$MANIFEST` - path of custom user supplied `MANIFEST.MF`
+
+Other placeholders default to corresponding environment variables.
 
 ## Libraries definitions
 

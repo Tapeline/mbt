@@ -15,6 +15,10 @@ class AssetsConfig:
 @dataclass
 class BuildConfig:
     output_dir: str
+    bootclasspath: list[str]
+    build_cmd: list[str] | None
+    preverify_cmd: list[str] | None
+    package_cmd: list[str] | None
 
 
 @dataclass

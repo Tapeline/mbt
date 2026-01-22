@@ -54,3 +54,12 @@ def collect_bundled_libs(
                 for path in glob.glob(conf.glob, recursive=True, root_dir=base)
             )
     return libs
+
+
+def collect_bootclasspath(boot_cp: list[str], base: Path) -> list[Path]:
+    libs = []
+    for cp in boot_cp:
+        libs.extend(
+            Path(path) for path in glob.glob(cp, recursive=True, root_dir=base)
+        )
+    return libs
